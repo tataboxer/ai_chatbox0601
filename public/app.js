@@ -59,7 +59,7 @@ document.addEventListener('DOMContentLoaded', () => {
         // saveConversationHistory();
 
         try {
-            const response = await fetch('/api/chat', {
+            const response = await fetch('/server.js', {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify({
