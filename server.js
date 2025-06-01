@@ -8,7 +8,7 @@ app.use(cors());
 app.use(express.json());
 
 // 添加这行来提供静态文件
-app.use(express.static(path.join(__dirname)));
+app.use(express.static(path.join(__dirname, 'public')));
 
 require('dotenv').config();
 const ARK_API_KEY = process.env.ARK_API_KEY;
@@ -44,7 +44,7 @@ app.post('/api/chat', async (req, res) => {
     }
 });
 
-const PORT = 3000;
+const PORT = process.env.PORT || 3000;
 app.listen(PORT, () => {
     console.log(`服务器运行在 http://localhost:${PORT}`);
 });
