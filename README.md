@@ -6,12 +6,7 @@
 
 - `public/`: 包含前端静态文件，如 `index.html` (主页面), `app.js` (前端逻辑) 和 `style.css` (页面样式)。
 - `server.js`: 后端服务器文件，处理 API 请求。
-- `vercel.json`: Vercel 部署配置文件，定义了函数运行时和路由规则。
 - `.env`: 环境变量文件，用于存储敏感信息，如 API 密钥。
-
-## 部署说明
-
-本项目通过 Vercel 进行部署。如果遇到部署问题，请检查 `vercel.json` 文件中的 `runtime` 配置，确保其符合 Vercel 的最新规范。例如，`node:20.x` 可能需要更新为 `nodejs20.x`。
 
 ## 页面用途
 
