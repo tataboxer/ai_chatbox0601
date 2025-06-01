@@ -50,7 +50,8 @@ export default async function handler(req, res) {
             }
         );
         
-        console.log('收到火山豆包API响应，状态码:', response.status);
+        console.log('请求成功，状态码:', response.status);
+        console.log('响应头:', response.headers);
 
         // 设置响应头
         res.setHeader('Content-Type', 'text/event-stream');
@@ -60,16 +61,12 @@ export default async function handler(req, res) {
         // 将 Axios 响应流直接转发给客户端
         response.data.pipe(res);
     } catch (error) {
-        console.error('API请求发生错误:', {
-            message: error.message,
-            stack: error.stack,
-            response: error.response?.data,
-            config: {
-                url: error.config?.url,
-                method: error.config?.method,
-                headers: error.config?.headers
-            }
-        });
+        console.error('请求失败:', error.message);
+        if (error.response) {
+            console.error('响应数据:', error.response.data);
+            console.error('响应状态码:', error.response.status);
+            console.error('响应头:', error.response.headers);
+        }
         
         res.status(500).json({ 
             error: '服务器内部错误',

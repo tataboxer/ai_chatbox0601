@@ -14,6 +14,8 @@ require('dotenv').config();
 const ARK_API_KEY = process.env.ARK_API_KEY;
 
 app.post('/api/chat', async (req, res) => {
+    console.log('收到请求，路径:', req.path);
+    console.log('请求体:', req.body);
     try {
         const response = await axios.post(
             'https://ark.cn-beijing.volces.com/api/v3/chat/completions',
@@ -39,7 +41,15 @@ app.post('/api/chat', async (req, res) => {
 
         // 将 Axios 响应流直接转发给客户端
         response.data.pipe(res);
+        console.log('请求成功，状态码:', response.status);
+        console.log('响应头:', response.headers);
     } catch (error) {
+        console.error('请求失败:', error.message);
+        if (error.response) {
+            console.error('响应数据:', error.response.data);
+            console.error('响应状态码:', error.response.status);
+            console.error('响应头:', error.response.headers);
+        }
         res.status(500).json({ error: error.message });
     }
 });
