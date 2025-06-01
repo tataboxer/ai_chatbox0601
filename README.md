@@ -1,89 +1,34 @@
-# AI生活教练
+# AI Life Coach 项目
 
-这是一个基于Web的AI生活教练应用，旨在提供一个简洁、美观且功能丰富的聊天界面，帮助用户解决生活中的问题。该应用采用了类似Apple风格的UI设计，提供流畅的用户体验。
-
-## 技术栈
-
-- **前端**: HTML, CSS (Apple风格设计), JavaScript
-- **后端**: Node.js (Express.js)
-- **AI服务**: 火山引擎方舟平台 (Ark Platform)
-
-## 功能特性
-
-- **Apple风格UI**: 界面设计简洁、优雅，符合Apple产品的视觉风格。
-- **实时聊天**: 用户可以与AI生活教练进行实时对话。
-- **流式响应**: AI的回复以流式方式逐步显示，提升用户体验。
-- **对话历史**: 自动保存和加载用户的对话历史，方便回顾。
-- **响应式设计**: 界面在不同设备上均能良好显示（尽管已移除移动端特定适配，但基础布局仍适应Web）。
-
-## 安装与运行
-
-请按照以下步骤在本地安装和运行此项目：
-
-### 1. 克隆仓库
-
-```bash
-git clone <仓库地址>
-cd AI_life_coach
-```
-
-### 2. 移动前端文件到 `public` 目录
-
-```bash
-mkdir public
-mv app.js index.html style.css public/
-```
-
-## 环境变量设置
-
-为了保证API密钥的安全，本项目使用环境变量来存储 `ARK_API_KEY`。请按照以下步骤设置：
-
-1. 在项目根目录下创建 `.env` 文件。
-2. 在 `.env` 文件中添加以下内容，并将 `your_ark_api_key_here` 替换为你的实际API密钥：
-
-   ```
-   ARK_API_KEY=your_ark_api_key_here
-   ```
-
-3. 如果你使用的是 Vercel 部署，请在 Vercel 项目设置中添加 `ARK_API_KEY` 环境变量。
-
-### 2. 安装依赖
-
-在项目根目录下，安装后端和前端所需的Node.js依赖：
-
-```bash
-npm install
-```
-
-
-
-### 4. 运行后端服务器
-
-在项目根目录下，启动Node.js后端服务器：
-
-```bash
-npm start
-```
-
-服务器将运行在 `http://localhost:3000`。
-
-### 5. 访问前端应用
-
-在浏览器中打开 `http://localhost:3000/index.html` 来使用应用。
-
-### 5. 访问前端应用
-
-在浏览器中打开 `index.html` 文件，或者通过访问 `http://localhost:3000/index.html` 来使用应用。
+这是一个 AI Life Coach 项目，旨在提供一个基于网页的 AI 助手。
 
 ## 项目结构
 
-- `public/index.html`: 前端主页面，包含聊天界面的HTML结构。
-- `public/style.css`: 样式文件，定义了应用的视觉风格，包括Apple风格的UI元素。
-- `public/app.js`: 前端JavaScript文件，处理用户交互、消息发送、流式响应处理和对话历史管理。
-- `server.js`: 后端Node.js服务器，负责处理API请求，与火山引擎方舟平台进行通信，并提供静态文件服务。
-- `package.json`: 项目依赖和脚本配置。
-- `package-lock.json`: 记录了项目安装时确切的依赖版本。
+- `public/`: 包含前端静态文件，如 `index.html` (主页面), `app.js` (前端逻辑) 和 `style.css` (页面样式)。
+- `server.js`: 后端服务器文件，处理 API 请求。
+- `vercel.json`: Vercel 部署配置文件，定义了函数运行时和路由规则。
+- `.env`: 环境变量文件，用于存储敏感信息，如 API 密钥。
 
-## 许可证
+## 部署说明
 
-[根据您的项目选择合适的许可证，例如 MIT, Apache 2.0 等]
+本项目通过 Vercel 进行部署。如果遇到部署问题，请检查 `vercel.json` 文件中的 `runtime` 配置，确保其符合 Vercel 的最新规范。例如，`node:20.x` 可能需要更新为 `nodejs20.x`。
+
+## 页面用途
+
+- `index.html`: 网页的主入口，负责加载 `app.js` 和 `style.css`。
+- `app.js`: 包含与 AI 助手交互的 JavaScript 逻辑，例如发送请求和处理响应。
+- `style.css`: 定义了页面的视觉样式，包括布局、颜色和字体。
+
+## 布局结构
+
+页面采用响应式设计，使用 CSS Flexbox 和 Grid 布局，以确保在不同设备上都能良好显示。
+
+## 样式说明
+
+所有 CSS 样式都添加了详细的中文注释，方便理解和修改。
+
+## 优化建议
+
+- 考虑使用 HTML5 的高级特性，如 Canvas、SVG 等，以增强用户体验。
+- 优化页面加载性能，例如压缩 CSS 文件和优化图片资源。
+- 确保网页在主流浏览器中都能正常显示和交互。
