@@ -27,6 +27,13 @@ git clone <仓库地址>
 cd AI_life_coach
 ```
 
+### 2. 移动前端文件到 `public` 目录
+
+```bash
+mkdir public
+mv app.js index.html style.css public/
+```
+
 ## 环境变量设置
 
 为了保证API密钥的安全，本项目使用环境变量来存储 `ARK_API_KEY`。请按照以下步骤设置：
@@ -55,10 +62,14 @@ npm install
 在项目根目录下，启动Node.js后端服务器：
 
 ```bash
-node server.js
+npm start
 ```
 
 服务器将运行在 `http://localhost:3000`。
+
+### 5. 访问前端应用
+
+在浏览器中打开 `http://localhost:3000/index.html` 来使用应用。
 
 ### 5. 访问前端应用
 
@@ -66,9 +77,9 @@ node server.js
 
 ## 项目结构
 
-- `index.html`: 前端主页面，包含聊天界面的HTML结构。
-- `style.css`: 样式文件，定义了应用的视觉风格，包括Apple风格的UI元素。
-- `app.js`: 前端JavaScript文件，处理用户交互、消息发送、流式响应处理和对话历史管理。
+- `public/index.html`: 前端主页面，包含聊天界面的HTML结构。
+- `public/style.css`: 样式文件，定义了应用的视觉风格，包括Apple风格的UI元素。
+- `public/app.js`: 前端JavaScript文件，处理用户交互、消息发送、流式响应处理和对话历史管理。
 - `server.js`: 后端Node.js服务器，负责处理API请求，与火山引擎方舟平台进行通信，并提供静态文件服务。
 - `package.json`: 项目依赖和脚本配置。
 - `package-lock.json`: 记录了项目安装时确切的依赖版本。
