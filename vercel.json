@@ -5,7 +5,7 @@
       "src": "api/chat.js",
       "use": "@vercel/node@4.0.0",
       "config": {
-        "nodeVersion": "18.x",
+        "nodeVersion": "22.x",
         "includeFiles": ["api/**"],
         "maxLambdaSize": "15mb",
         "suppressResponse": false
