@@ -3,17 +3,18 @@ const axios = require('axios');
 
 // 导出处理函数
 export default async function handler(req, res) {
-    // 只处理 POST 请求
     if (req.method !== 'POST') {
         return res.status(405).json({ error: '只支持 POST 请求' });
     }
 
     try {
-        // 从环境变量获取 API 密钥
         const ARK_API_KEY = process.env.ARK_API_KEY;
-        
         if (!ARK_API_KEY) {
-            return res.status(500).json({ error: 'API 密钥未配置' });
+            console.error('ARK_API_KEY 未配置');
+            return res.status(500).json({ 
+                error: '服务器配置错误',
+                details: 'ARK_API_KEY 未配置'
+            });
         }
 
         // 发送请求到 ARK API
@@ -43,7 +44,14 @@ export default async function handler(req, res) {
         // 将 Axios 响应流直接转发给客户端
         response.data.pipe(res);
     } catch (error) {
-        console.error('API 请求错误:', error);
-        res.status(500).json({ error: error.message || '服务器内部错误' });
+        console.error('API 请求详细错误:', {
+            message: error.message,
+            stack: error.stack,
+            response: error.response?.data
+        });
+        res.status(500).json({ 
+            error: '服务器内部错误',
+            details: error.message
+        });
     }
 }
